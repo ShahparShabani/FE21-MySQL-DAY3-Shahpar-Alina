@@ -82,8 +82,8 @@ group by employees.emp_no
 /* 10. We need a table with managers, who are working for us at this moment: first and last name, date of birth, gender, hire_date, title, department name and salary. */
 
 SELECT (employees.emp_no),(employees.first_name),(employees.last_name),(employees.birth_date),(employees.gender),(employees.hire_date),(titles.title),(salaries.salary),(departments.dept_name) FROM employees
- JOIN titles ON titles.emp_no = employees.emp_no
- JOIN salaries ON salaries.emp_no = employees.emp_no
+ join titles ON titles.emp_no = employees.emp_no
+ join salaries ON salaries.emp_no = employees.emp_no
  join dept_emp on dept_emp.emp_no = employees.emp_no
  join departments on departments.dept_no = dept_emp.dept_no
  join dept_manager on dept_manager.emp_no = employees.emp_no
@@ -91,5 +91,13 @@ WHERE dept_emp.to_date>=CURRENT_DATE()
 group by employees.emp_no
 
 /* Create a query that will join all tables and show all data from all tables. */
+SELECT employees.*,titles.*,salaries.*,dept_emp.*,departments.*,dept_manager.*
+FROM employees
+ join titles ON titles.emp_no = employees.emp_no
+ join salaries ON salaries.emp_no = employees.emp_no
+ join dept_emp on dept_emp.emp_no = employees.emp_no
+ join departments on departments.dept_no = dept_emp.dept_no
+ join dept_manager on dept_manager.dept_no = departments.dept_no
+
 
 /*  Now you should create at least 5 queries on your own, try to use data from more than 2 tables. */
